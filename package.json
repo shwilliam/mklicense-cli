@@ -1,0 +1,36 @@
+{
+  "name": "mklicense-cli",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.js",
+  "preferGlobal": true,
+  "bin": {
+    "mklicense": "./bin/mklicense"
+  },
+  "scripts": {
+    "cli": "node ./bin/mklicense"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shwilliam/mklicense-cli.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "William L <w-lindvall@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shwilliam/mklicense-cli/issues"
+  },
+  "homepage": "https://github.com/shwilliam/mklicense-cli#readme",
+  "dependencies": {
+    "arg": "^4.1.1",
+    "chalk": "^2.4.2",
+    "esm": "^3.2.25",
+    "inquirer": "^7.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1"
+  }
+}
