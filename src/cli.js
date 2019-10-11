@@ -7,6 +7,7 @@ const parseArgsToOptions = rawArgs => {
     {
       '--mit': Boolean,
       '--isc': Boolean,
+      '--gpl': Boolean,
     },
     {
       argv: rawArgs.slice(1),
@@ -15,11 +16,11 @@ const parseArgsToOptions = rawArgs => {
   return {
     isMIT: args['--mit'] || false,
     isISC: args['--isc'] || false,
+    isGPL: args['--gpl'] || false,
   }
 }
 
 const promptForOptions = async options => {
-  console.log(options)
   let selectedLicense
   if (!options.isMIT && !options.isISC) {
     selectedLicense = await inquirer.prompt([
@@ -27,7 +28,7 @@ const promptForOptions = async options => {
         type: 'list',
         name: 'license',
         message: 'License:',
-        choices: ['MIT', 'ISC'],
+        choices: ['MIT', 'ISC', 'GPL'],
       },
     ])
   } else {
@@ -35,6 +36,8 @@ const promptForOptions = async options => {
       selectedLicense = {license: 'MIT'}
     } else if (options.isISC) {
       selectedLicense = {license: 'ISC'}
+    } else if (options.isGPL) {
+      selectedLicense = {license: 'GPL'}
     }
   }
 
@@ -42,7 +45,9 @@ const promptForOptions = async options => {
 
   if (
     (selectedLicense && selectedLicense.license === 'MIT') ||
-    options.isMIT
+    options.isMIT ||
+    (selectedLicense && selectedLicense.license === 'GPL') ||
+    options.isGPL
   ) {
     questions.push(
       {
@@ -54,6 +59,24 @@ const promptForOptions = async options => {
         type: 'input',
         name: 'year',
         message: 'Year:',
+      },
+    )
+  }
+
+  if (
+    (selectedLicense && selectedLicense.license === 'GPL') ||
+    options.isGPL
+  ) {
+    questions.push(
+      {
+        type: 'input',
+        name: 'title',
+        message: 'Project title:',
+      },
+      {
+        type: 'input',
+        name: 'desc',
+        message: 'Project description:',
       },
     )
   }
