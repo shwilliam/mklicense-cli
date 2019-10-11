@@ -6,6 +6,7 @@ const parseArgsToOptions = rawArgs => {
   const args = arg(
     {
       '--mit': Boolean,
+      '--isc': Boolean,
     },
     {
       argv: rawArgs.slice(1),
@@ -13,34 +14,53 @@ const parseArgsToOptions = rawArgs => {
   )
   return {
     isMIT: args['--mit'] || false,
+    isISC: args['--isc'] || false,
   }
 }
 
 const promptForOptions = async options => {
-  const questions = [
-    {
-      type: 'input',
-      name: 'name',
-      message: 'Name:',
-    },
-    {
-      type: 'input',
-      name: 'year',
-      message: 'Year:',
-    },
-  ]
+  console.log(options)
+  let selectedLicense
+  if (!options.isMIT && !options.isISC) {
+    selectedLicense = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'license',
+        message: 'License:',
+        choices: ['MIT', 'ISC'],
+      },
+    ])
+  } else {
+    if (options.isMIT) {
+      selectedLicense = {license: 'MIT'}
+    } else if (options.isISC) {
+      selectedLicense = {license: 'ISC'}
+    }
+  }
 
-  if (!options.isMIT)
-    questions.unshift({
-      type: 'list',
-      name: 'license',
-      message: 'License:',
-      choices: ['MIT'],
-    })
+  const questions = []
+
+  if (
+    (selectedLicense && selectedLicense.license === 'MIT') ||
+    options.isMIT
+  ) {
+    questions.push(
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Name:',
+      },
+      {
+        type: 'input',
+        name: 'year',
+        message: 'Year:',
+      },
+    )
+  }
 
   const answers = await inquirer.prompt(questions)
 
-  return answers
+  return {...answers, ...selectedLicense}
 }
 
 export const cli = async args => {
