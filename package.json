@@ -1,7 +1,7 @@
 {
   "name": "mklicense-cli",
   "version": "0.1.0",
-  "description": "",
+  "description": "Quickly generate a LICENSE for your next OS project",
   "main": "src/index.js",
   "preferGlobal": true,
   "bin": {
@@ -15,7 +15,9 @@
     "url": "git+https://github.com/shwilliam/mklicense-cli.git"
   },
   "keywords": [
-    "cli"
+    "cli",
+    "license",
+    "open-source"
   ],
   "author": "William L <w-lindvall@outlook.com>",
   "license": "MIT",
