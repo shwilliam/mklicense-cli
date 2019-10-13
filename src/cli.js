@@ -8,6 +8,7 @@ const parseArgsToOptions = rawArgs => {
       '--mit': Boolean,
       '--isc': Boolean,
       '--gpl': Boolean,
+      '--mpl': Boolean,
     },
     {
       argv: rawArgs.slice(1),
@@ -17,6 +18,7 @@ const parseArgsToOptions = rawArgs => {
     isMIT: args['--mit'] || false,
     isISC: args['--isc'] || false,
     isGPL: args['--gpl'] || false,
+    isMPL: args['--mpl'] || false,
   }
 }
 
@@ -28,7 +30,7 @@ const promptForOptions = async options => {
         type: 'list',
         name: 'license',
         message: 'License:',
-        choices: ['MIT', 'ISC', 'GPL'],
+        choices: ['MIT', 'ISC', 'GPL', 'MPL'],
       },
     ])
   } else {
@@ -38,6 +40,8 @@ const promptForOptions = async options => {
       selectedLicense = {license: 'ISC'}
     } else if (options.isGPL) {
       selectedLicense = {license: 'GPL'}
+    } else if (options.isMPL) {
+      selectedLicense = {license: 'MPL'}
     }
   }
 
@@ -47,7 +51,9 @@ const promptForOptions = async options => {
     (selectedLicense && selectedLicense.license === 'MIT') ||
     options.isMIT ||
     (selectedLicense && selectedLicense.license === 'GPL') ||
-    options.isGPL
+    options.isGPL ||
+    (selectedLicense && selectedLicense.license === 'MPL') ||
+    options.isMPL
   ) {
     questions.push(
       {
