@@ -51,9 +51,7 @@ const promptForOptions = async options => {
     (selectedLicense && selectedLicense.license === 'MIT') ||
     options.isMIT ||
     (selectedLicense && selectedLicense.license === 'GPL') ||
-    options.isGPL ||
-    (selectedLicense && selectedLicense.license === 'MPL') ||
-    options.isMPL
+    options.isGPL
   ) {
     questions.push(
       {
