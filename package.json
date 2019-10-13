@@ -8,6 +8,8 @@
     "mklicense": "./bin/mklicense"
   },
   "scripts": {
+    "lint:fix": "prettier --write 'src/**/*.js'",
+    "lint:check": "prettier --check 'src/**/*.js'",
     "cli": "node ./bin/mklicense"
   },
   "repository": {
@@ -33,6 +35,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.5.1"
+    "eslint": "^6.5.1",
+    "prettier": "^1.18.2"
   }
 }
