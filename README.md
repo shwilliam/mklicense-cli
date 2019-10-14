@@ -19,12 +19,14 @@ The type of license you wish to create can also be specified using a flag that c
 | MIT     | `--mit` |
 | ISC     | `--isc` |
 | GNU GPL | `--mit` |
+| MPL     | `--mpl` |
 
 ## Supported Licenses
 
 - MIT License
 - ISC License
 - GNU General Public License (v3.0 or later)
+- Mozilla Public License (v2.0)
 
 If you would like support for a license not listed above, please open an [issue](https://github.com/shwilliam/mklicense-cli/issues).
 
