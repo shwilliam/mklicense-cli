@@ -2,6 +2,7 @@ import generateMIT from './mit'
 import generateISC from './isc'
 import generateGPL from './gpl'
 import generateMPL from './mpl'
+import generateAPL from './apl'
 
 export default ({license, desc, name, year}) => {
   switch (license) {
@@ -13,6 +14,8 @@ export default ({license, desc, name, year}) => {
       return generateGPL(desc, name, year)
     case 'MPL':
       return generateMPL()
+    case 'APL':
+      return generateAPL(name, year)
     default:
       break
   }
