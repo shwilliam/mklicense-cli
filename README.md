@@ -18,7 +18,7 @@ The type of license you wish to create can also be specified using a flag that c
 | ------- | ------- |
 | MIT     | `--mit` |
 | ISC     | `--isc` |
-| GNU GPL | `--mit` |
+| GNU GPL | `--gpl` |
 | MPL     | `--mpl` |
 | APL     | `--apl` |
 
