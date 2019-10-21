@@ -10,7 +10,8 @@
   "scripts": {
     "lint:fix": "prettier --write 'src/**/*.js'",
     "lint:check": "prettier --check 'src/**/*.js'",
-    "cli": "node ./bin/mklicense"
+    "cli": "node ./bin/mklicense",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -34,8 +35,12 @@
     "inquirer": "^7.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
     "eslint": "^6.5.1",
+    "jest": "^24.9.0",
     "prettier": "^1.18.2"
   }
 }
